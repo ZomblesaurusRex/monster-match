@@ -1,0 +1,78 @@
+body{
+    background-image: url("../images/mainBack.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    align-content: center;
+    text-align: center;
+    color: #ebebeb;
+}
+a{
+    color: #ebebeb;
+    font-family: 'Special Elite', cursive;
+
+}
+h3{
+    font-family: 'Special Elite', cursive;
+    font-weight: lighter;
+    text-align: center;
+}
+#cite{
+    font-family: 'Amatic SC', cursive;
+    font-size: 1.1em;
+    color: #918f8f;
+
+}
+#nav{
+    font-family: 'Cinzel', serif;
+    background-color: #170025;
+}
+.jumbotron{
+    background-color: #1e00312f;
+    width: 90%;
+    margin: auto;
+    
+}
+.blockquote-footer{
+    font-family: 'Amatic SC', cursive;
+    font-weight: bolder;
+    font-size: 1.1em;
+    color: #918f8f;
+
+}
+.homeHead{
+    font-family: 'Cinzel', serif;
+    color: #ebebeb;
+    font-size: 4em;
+}
+.lead{
+    font-family: 'Special Elite', cursive;
+    color: #ebebeb;
+    font-size: 1.4em;
+
+}
+.homeInstructions{
+    font-family: 'Special Elite', cursive;
+    color: #ebebeb;
+    font-size: 1.4em;
+
+}
+.goBtn{
+    font-family: 'Amatic SC', cursive;
+    color: #ebebeb;
+    font-size: 2em;
+}
+.submitBtn{
+    font-family: 'Amatic SC', cursive;
+
+}
+.surveyTitle{
+    margin: 20px;
+    font-family: 'Cinzel', serif;
+    color: #ebebeb;
+    /* font-size: 5em; */
+}
+.survey{
+    align-content: left;
+    margin: auto;
+    text-align: left;
+}
