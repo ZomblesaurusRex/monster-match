@@ -6,7 +6,6 @@
 
 var matchData = require("../app/data/matchData");
 
-
 // ===============================================================================
 // ROUTING
 // ===============================================================================
@@ -21,7 +20,7 @@ module.exports = function (app) {
     app.get("/api/matches", function (req, res) {
         res.json(matchData);
     });
-
+    
     // API POST Requests
     // Below code handles when a user submits a form and thus submits data to the server.
     // In each of the below cases, when a user submits form data (a JSON object)
@@ -34,8 +33,27 @@ module.exports = function (app) {
         // Note the code here. Our "server" will respond to requests and let users know if they have a table or not.
         // It will do this by sending out the value "true" have a table
         // req.body is available since we're using the body parsing middleware
-            matchData.push(req.body);
-            res.json(false);
+        var matchScore = req.body.scores;
+        var scoresArr = [];
+        var bestMatch = 0;
+         
+        for (i = 0; i < matchScore.length; i++) {
+            var scoreDiff = 0;
+            for (i = 0; i < matchScore.length; j++) {
+                scoreDiff += (Math.abs(parseInt(matchData[i].scores[j] - parseInt(score[j]))))
+            }
+            scoresArr.push(scoreDiff);
+        }
+        for (i = 0; i < scoresArr.length; i++) {
+        if (scoresArr[i] <= scoresArr[bestMatch]){
+            bestMatch = i;
+        }
+        }
+        // return best match
+        var monsterMatch = scoresArr[bestMatch];
+        res.json(monsterMatch);
+        console.log(req.body);
+        matchData.push(req.body);
     });
 
     // ---------------------------------------------------------------------------
