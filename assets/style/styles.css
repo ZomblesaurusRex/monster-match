@@ -1,17 +1,25 @@
 body{
     background-image: url("../images/mainBack.jpg");
-    background-position: center;
+    background-color: #000000;
     background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center; 
     align-content: center;
     text-align: center;
     color: #ebebeb;
+    font-family: 'Special Elite', cursive;
+
 }
 a{
     color: #ebebeb;
     font-family: 'Special Elite', cursive;
 
 }
-h3{
+h4{
+    font-family: 'Cinzel', serif;
+
+}
+#about{
     font-family: 'Special Elite', cursive;
     font-weight: lighter;
     text-align: center;
@@ -26,11 +34,19 @@ h3{
     font-family: 'Cinzel', serif;
     background-color: #170025;
 }
+#quotefoot{
+    background: none;
+}
 .jumbotron{
     background-color: #1e00312f;
     width: 90%;
     margin: auto;
     
+}
+.jumbotron-fluid{
+background-color: #23222473;
+padding: 10px;
+margin-bottom: 30px;
 }
 .blockquote-footer{
     font-family: 'Amatic SC', cursive;
@@ -63,7 +79,10 @@ h3{
 }
 .submitBtn{
     font-family: 'Amatic SC', cursive;
-
+    margin: 20px;
+    font-size: 1.5em;
+    background-color: #000000;
+    border-color: #ffffff;
 }
 .surveyTitle{
     margin: 20px;
@@ -73,6 +92,19 @@ h3{
 }
 .survey{
     align-content: left;
-    margin: auto;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 30px;
     text-align: left;
+    background-color: #2f004d38;
+    border: solid;
+    border-color: #ebebeb;
+    border-radius: 10px;
+    overflow: auto;
+    width: 80%
+}
+
+footer{
+    background-color: #170025;
+    padding: 30px;
 }
