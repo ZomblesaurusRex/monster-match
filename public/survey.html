@@ -6,13 +6,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Monster Match Survey</title>
-        <link rel="stylesheet" href="../assets/style/reset.css" class="reset">
+        <link rel="stylesheet" href="./style/reset.css" class="reset">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Cinzel:400,700|Special+Elite&display=swap"
         rel="stylesheet">
-        <link rel="stylesheet" href="../assets/style/styles.css" class="style">
-        <script src="https://code.jquery.com/jquery.js"></script>
+        <link rel="stylesheet" type="text/css" href="./style/styles.css" class="style">
     </head>
     
 <body>
@@ -28,10 +27,10 @@
         <h3>Fill out the survey screaming below... <br> Based on your answers, we will scour our
             catacombs for the Monster that best matches you!</h3>
         </div>
-    <div class="survey container">
+        <div class="survey container">
         <form>
-        <hr>
-        <h3 id="about">About You</h3>
+            <hr>
+            <h3 id="about">About You</h3>
         <h4>Name (Required)</h4>
         <input type="text" id="name" class="form-control" required>
         <h4>Link to a Photo of Yourself(Living or Otherwise: Required)</h4>
@@ -151,25 +150,26 @@
         <br />
         <button type="submit" id="submit" class="submitBtn btn btn-primary">We're Dying to meet you!</button>
     </form>
-    </div>
+</div>
     
-    <div class="modal-content">
+<div class="modal-content">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">x</button>
             <h2 class="modal-title">Best Match</h2>
         </div>
         <div class="modal-body">
-            <h2 id="match-name"></h2>
-            <img style="width: 350px; height: 350px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5oREcQOEFFUruF9iF5l4ohVS3TKasdCv76jtrc8GQZFe8CFMklA" alt="" id="match-img">
+            <h2 id="matchName"></h2>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5oREcQOEFFUruF9iF5l4ohVS3TKasdCv76jtrc8GQZFe8CFMklA" alt="" id="matchImg">
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
     </div>
     <footer>
-        <p><a href="#">Raw JSON Results</a> | <a href="#">Link to Github</a></p>
+        <p><a href="/api/monsters">Raw JSON Results</a> | <a href="https://github.com/ZomblesaurusRex/monster-match">Link to Github</a></p>
     </footer>
     
+    <script src="https://code.jquery.com/jquery.js"></script>
     <script>
     // ================================================================================
         // SURVEY
@@ -185,7 +185,7 @@
                 return ok;
             }
             if (validateForm() == true) {
-            var userData = {
+                var userData = {
                 name: $("#name").val(),
                 imgURL: $("#photo").val(),
                 scores: [
@@ -214,7 +214,7 @@
             return false;
         });
 
-
+        
 // ================================================================================
 </script>
 </body>

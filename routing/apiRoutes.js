@@ -7,7 +7,7 @@ var matchData = require("../app/data/matchData");
 module.exports = function (app) {
     // API GET Requests
     app.get("/api/monsters", function (req, res) {
-        res.json(matchArray);
+        res.json(matchData);
     });
     // =====================================================
     // API POST Requests
@@ -65,7 +65,7 @@ module.exports = function (app) {
         console.log("New user added");
         res.json(monsterMatch);
         console.log(userData);
-        matchArray.push(req.body);
+        matchData.push(req.body);
     });
 
     // ---------------------------------------------------------------------------
