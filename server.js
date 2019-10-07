@@ -5,8 +5,6 @@
 var fs = require("fs");
 var express = require("express");
 var path = require("path");
-var nodemon = require("nodemon");
-
 
 // ==============================================================================
 // EXPRESS CONFIGURATION

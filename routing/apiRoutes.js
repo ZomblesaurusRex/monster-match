@@ -23,6 +23,7 @@ module.exports = function (app) {
         var userName = userData.name
         var userScores = userData.scores;
          
+        // for loop over old Data do something with each item before putting it in the Data;
         var b = userScores.map(function (item) {
             return parseInt(item, 10);
         });
@@ -41,21 +42,21 @@ module.exports = function (app) {
         console.log("Best match diff " + bestMatch.monsterDifference);
         console.log("+++++++=================++++++++++");
 
-        for (var i = 0; i < matchArray.length; i++) {
-            console.log(matchArray[i].name);
+        for (var i = 0; i < matchData.length; i++) {
+            console.log(matchData[i].name);
             totalDifference = 0;
             console.log("Total Diff " + totalDifference);
             console.log("Best match diff " + bestMatch.monsterDifference);
 
-            var betaMonsterScore = matchArray[i].scores.reduce((a, b) => a + b, 0);
+            var betaMonsterScore = matchData[i].scores.reduce((a, b) => a + b, 0);
             console.log("Total score " + betaMonsterScore);
             totalDifference += Math.abs(sum - betaMonsterScore);
             console.log("-------------------------> " + totalDifference);
 
             // =============================================
             if (totalDifference <= bestMatch.monsterDifference) {
-                bestMatch.name = matchArray[i].name;
-                bestMatch.photo = matchArray[i].photo;
+                bestMatch.name = matchData[i].name;
+                bestMatch.photo = matchData[i].photo;
                 bestMatch.monsterDifference = totalDifference;
             }
             console.log(totalDifference + " Total Difference");
@@ -63,7 +64,7 @@ module.exports = function (app) {
         console.log(bestMatch);
 
         console.log("New user added");
-        res.json(monsterMatch);
+        res.json(bestMatch);
         console.log(userData);
         matchData.push(req.body);
     });
@@ -73,8 +74,8 @@ module.exports = function (app) {
     // Don"t worry about it!
 
     app.post("/api/clear", function (req, res) {
-        // Empty out the arrays of data
-        matchArray.length = 0;
+        // Empty out the Datas of data
+        matchData.length = 0;
 
         res.json({ ok: true });
     });
