@@ -1,9 +1,3 @@
-// ===============================================================================
-// LOAD DATA
-// We are linking our routes to a series of "data" sources.
-// These data sources hold arrays of information on table-data, waitinglist, etc.
-// ===============================================================================
-
 var matchData = require("../app/data/matchData");
 
 // ===============================================================================
@@ -12,48 +6,66 @@ var matchData = require("../app/data/matchData");
 
 module.exports = function (app) {
     // API GET Requests
-    // Below code handles when users "visit" a page.
-    // In each of the below cases when a user visits a link
-    // (ex: localhost:PORT/api/admin... they are shown a JSON of the data in the table)
-    // ---------------------------------------------------------------------------
-
-    app.get("/api/matches", function (req, res) {
-        res.json(matchData);
+    app.get("/api/monsters", function (req, res) {
+        res.json(matchArray);
     });
-    
+    // =====================================================
     // API POST Requests
-    // Below code handles when a user submits a form and thus submits data to the server.
-    // In each of the below cases, when a user submits form data (a JSON object)
-    // ...the JSON is pushed to the appropriate JavaScript array
-    // (ex. User fills out a reservation request... this data is then sent to the server...
-    // Then the server saves the data to the tableData array)
-    // ---------------------------------------------------------------------------
+    app.post("/api/monsters", function (req, res) {
+        var totalDiff = 0;
+        var bestMatch = {
+            name: "",
+            imgURL: "",
+            scoreDiff: 1000
+        };
 
-    app.post("/api/matches", function (req, res) {
-        // Note the code here. Our "server" will respond to requests and let users know if they have a table or not.
-        // It will do this by sending out the value "true" have a table
-        // req.body is available since we're using the body parsing middleware
-        var matchScore = req.body.scores;
-        var scoresArr = [];
-        var bestMatch = 0;
+        var userData = req.body;
+        var userName = userData.name
+        var userScores = userData.scores;
          
-        for (i = 0; i < matchScore.length; i++) {
-            var scoreDiff = 0;
-            for (i = 0; i < matchScore.length; j++) {
-                scoreDiff += (Math.abs(parseInt(matchData[i].scores[j] - parseInt(score[j]))))
+        var b = userScores.map(function (item) {
+            return parseInt(item, 10);
+        });
+        userData = {
+            name: req.body.name,
+            photo: req.body.photo,
+            scores: b
+        };
+
+        console.log("Name: " + userName);
+        console.log("User Score " + userScores);
+
+        var sum = b.reduce((a, b) => a + b, 0);
+
+        console.log("Sum of Monster score " + sum);
+        console.log("Best match diff " + bestMatch.monsterDifference);
+        console.log("+++++++=================++++++++++");
+
+        for (var i = 0; i < matchArray.length; i++) {
+            console.log(matchArray[i].name);
+            totalDifference = 0;
+            console.log("Total Diff " + totalDifference);
+            console.log("Best match diff " + bestMatch.monsterDifference);
+
+            var betaMonsterScore = matchArray[i].scores.reduce((a, b) => a + b, 0);
+            console.log("Total score " + betaMonsterScore);
+            totalDifference += Math.abs(sum - betaMonsterScore);
+            console.log("-------------------------> " + totalDifference);
+
+            // =============================================
+            if (totalDifference <= bestMatch.monsterDifference) {
+                bestMatch.name = matchArray[i].name;
+                bestMatch.photo = matchArray[i].photo;
+                bestMatch.monsterDifference = totalDifference;
             }
-            scoresArr.push(scoreDiff);
+            console.log(totalDifference + " Total Difference");
         }
-        for (i = 0; i < scoresArr.length; i++) {
-        if (scoresArr[i] <= scoresArr[bestMatch]){
-            bestMatch = i;
-        }
-        }
-        // return best match
-        var monsterMatch = scoresArr[bestMatch];
+        console.log(bestMatch);
+
+        console.log("New user added");
         res.json(monsterMatch);
-        console.log(req.body);
-        matchData.push(req.body);
+        console.log(userData);
+        matchArray.push(req.body);
     });
 
     // ---------------------------------------------------------------------------
@@ -62,7 +74,7 @@ module.exports = function (app) {
 
     app.post("/api/clear", function (req, res) {
         // Empty out the arrays of data
-        matchData.length = 0;
+        matchArray.length = 0;
 
         res.json({ ok: true });
     });

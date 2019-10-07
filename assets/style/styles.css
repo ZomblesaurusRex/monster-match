@@ -37,6 +37,10 @@ h4{
 #quotefoot{
     background: none;
 }
+#resultsModal img {
+  overflow: hidden;
+  width: 500px;
+}
 .jumbotron{
     background-color: #1e00312f;
     width: 90%;
